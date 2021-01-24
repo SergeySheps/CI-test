@@ -1,9 +1,9 @@
 pipeline {
-    agent any
+    agent { dockerfile true }
     stages {
         stage('build') {
             steps {
-                echo "Building......"
+                echo "Building from Docker...."
                 sh 'npm version'
             }
         }

@@ -1,1 +1,2 @@
-# CI-test
+1. Run app with command <code>docker-compose -f "docker-compose.debug.yml" up -d --build </code>
+2. (optional) Seed database data (remove comment near <code>seedData()</code> function in the createConnection.js file)

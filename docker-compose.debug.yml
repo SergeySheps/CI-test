@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  backend:
+    container_name: nodeApp
+    image: backend
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    build: .
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3001:3001
+      - 9229:9229
+    links: 
+      - mongo
+    command: npm run docker:dev
+  mongo:
+    container_name: mongoApp
+    image: mongo
+    # run command docker volume create --name=mongodbdata to create local volume
+    volumes:
+      - "mongodbdata:/data/db"
+    ports:
+      - 27017:27017
+
+volumes:
+  mongodbdata:
+    external: true
